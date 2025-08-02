@@ -26,7 +26,7 @@ export default function GenreDropdown() {
   }, []);
 
   return (
-    <View className="mb-4">
+    <View className=" p-5">
       <Text className="mb-1 text-sm font-medium text-gray-700">Filter by Genre:</Text>
       {loading ? (
         <ActivityIndicator />

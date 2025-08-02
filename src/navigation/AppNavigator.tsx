@@ -6,6 +6,7 @@ import FavoritesScreen from '../screens/FavoritesScreen';
 import DetailScreen from '../screens/DetailScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import Toast from 'react-native-toast-message';
 
 export type RootStackParamList = {
   MainTabs: undefined;
@@ -48,8 +49,16 @@ export default function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
-        <Stack.Screen name="Detail" component={DetailScreen} />
+        <Stack.Screen
+          name="Detail"
+          component={DetailScreen}
+          options={{
+            title: '',
+            headerShadowVisible: false,
+          }}
+        />
       </Stack.Navigator>
+      <Toast />
     </NavigationContainer>
   );
 }

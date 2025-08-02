@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   image: {
-    height: 176, // matches Tailwind h-44
+    height: 176,
     width: '100%',
     borderRadius: 8,
     marginBottom: 8,

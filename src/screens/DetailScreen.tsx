@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   Dimensions,
+  Share,
 } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/AppNavigator';
@@ -24,7 +25,7 @@ export default function DetailScreen() {
 
   const [anime, setAnime] = useState<Anime | null>(null);
   const [loading, setLoading] = useState(true);
-  const [imageRatio, setImageRatio] = useState(2 / 3); // fallback ratio
+  const [imageRatio, setImageRatio] = useState(2 / 3);
 
   const { favorites, addToFavorites, removeFromFavorites } = useAnimeStore();
   const isFavorited = favorites.some((a) => a.mal_id === animeId);
@@ -90,6 +91,15 @@ export default function DetailScreen() {
     );
   }
 
+  const handleShare = async () => {
+    try {
+      const message = `Check out this anime: ${anime.title}\n\n${anime.url}`;
+      await Share.share({ message });
+    } catch (error) {
+      console.error('Error sharing anime:', error);
+    }
+  };
+
   return (
     <ScrollView className="flex-1 bg-white px-6" contentContainerStyle={{ paddingBottom: 60 }}>
       {/* Anime Poster */}
@@ -126,10 +136,17 @@ export default function DetailScreen() {
         ))}
       </View>
 
-      {/* Rating */}
-      <View className="mt-4 flex-row items-center gap-2">
-        {renderStars(anime.score ?? 0)}
-        <Text className="text-2xl font-bold italic">{anime.score?.toFixed(1) ?? 'N/A'}</Text>
+      <View className=" mt-4 flex-row items-center justify-between">
+        {/* Rating */}
+        <View className=" flex-row  gap-2">
+          {renderStars(anime.score ?? 0)}
+          <Text className="text-2xl font-bold italic">{anime.score?.toFixed(1) ?? 'N/A'}</Text>
+        </View>
+
+        <TouchableOpacity onPress={handleShare} className="flex-row items-center gap-2 p-2">
+          <FontAwesome name="share-alt" size={20} />
+          <Text className=" ext-sm">Share</Text>
+        </TouchableOpacity>
       </View>
 
       {/* Anime Info */}

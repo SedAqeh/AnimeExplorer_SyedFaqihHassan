@@ -15,6 +15,7 @@ export interface Anime {
   status: string;
   studios: { name: string }[];
   year: number;
+  url: string;
 }
 
 interface AnimeStore {

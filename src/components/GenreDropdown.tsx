@@ -32,11 +32,17 @@ export default function GenreDropdown() {
         <ActivityIndicator />
       ) : (
         <Picker
+          testID="genre-picker"
           selectedValue={selectedGenre ?? ''}
           onValueChange={(itemValue) => setSelectedGenre(itemValue === '' ? null : itemValue)}>
           <Picker.Item label="All" value="" />
           {genres.map((genre) => (
-            <Picker.Item key={genre.mal_id} label={genre.name} value={genre.mal_id.toString()} />
+            <Picker.Item
+              key={genre.mal_id}
+              label={genre.name}
+              value={genre.mal_id.toString()}
+              testID={`genre-${genre.name}`}
+            />
           ))}
         </Picker>
       )}

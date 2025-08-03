@@ -1,5 +1,13 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { View, Animated, Text, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
+import {
+  View,
+  Animated,
+  Text,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
+  Linking,
+  Button,
+} from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import AnimeCard from '../components/AnimeCard';
 import { getAnimeList, searchAnime } from '../api/jikan';
@@ -158,6 +166,22 @@ export default function HomeScreen() {
 
       <GenreDropdown />
 
+      <Button
+        title="Open Detail via Deep Link"
+        onPress={async () => {
+          const url = 'animeexplorer://anime/21';
+          const supported = await Linking.canOpenURL(url);
+
+          console.log('canOpenURL:', supported);
+
+          if (supported) {
+            await Linking.openURL(url);
+          } else {
+            alert('Deep link not supported (did you restart with --scheme?)');
+          }
+        }}
+      />
+
       {isShimmerVisible() ? (
         <View className="flex-row flex-wrap justify-between px-4">
           {Array.from({ length: 6 }).map((_, idx) => (
@@ -242,7 +266,7 @@ export default function HomeScreen() {
               flatListRef.current?.scrollToOffset({ offset: 0, animated: true });
             }}
             className="rounded-full bg-indigo-600 px-4 py-2 text-white shadow">
-            Back top
+            Back to top
           </Text>
         </Animated.View>
       )}

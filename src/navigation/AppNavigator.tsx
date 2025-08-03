@@ -4,13 +4,28 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import DetailScreen from '../screens/DetailScreen';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, LinkingOptions } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Toast from 'react-native-toast-message';
 
 export type RootStackParamList = {
   MainTabs: undefined;
   Detail: { animeId: number };
+};
+
+const linking: LinkingOptions<RootStackParamList> = {
+  prefixes: ['animeexplorer://', 'https://animeexplorer.com'],
+  config: {
+    screens: {
+      MainTabs: {
+        screens: {
+          Home: 'home',
+          Favorites: 'favorites',
+        },
+      },
+      Detail: 'anime/:animeId',
+    },
+  },
 };
 
 const Tab = createBottomTabNavigator();
@@ -46,7 +61,7 @@ function MainTabs() {
 
 export default function AppNavigator() {
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <Stack.Navigator>
         <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
         <Stack.Screen

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Animated, StyleSheet } from 'react-native';
 
-const ITEM_WIDTH = 104;
+const ITEM_WIDTH = 96;
 const ITEM_HEIGHT = 128;
 
 export default function TrendingPlaceholder() {
@@ -23,11 +23,14 @@ export default function TrendingPlaceholder() {
   });
 
   return (
-    <View className="mb-4 px-2">
-      <View className="mb-2 h-6 w-24 rounded bg-gray-300" />
+    <View className="mb-4 px-4">
+      <View className="mb-2 h-6 w-28 rounded bg-gray-300" />
       <View className="flex-row">
-        {[...Array(6)].map((_, index) => (
-          <View key={index} className="mr-2 h-32 w-24 overflow-hidden rounded-lg bg-gray-300">
+        {[...Array(10)].map((_, index) => (
+          <View
+            key={index}
+            className="mr-2 overflow-hidden rounded-lg bg-gray-300"
+            style={{ width: ITEM_WIDTH, height: ITEM_HEIGHT }}>
             <Animated.View
               style={[
                 StyleSheet.absoluteFillObject,

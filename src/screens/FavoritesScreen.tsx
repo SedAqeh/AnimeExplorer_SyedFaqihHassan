@@ -21,7 +21,7 @@ export default function FavoritesScreen() {
 
   return (
     <View className="flex-1 bg-white px-4 pt-4">
-      <Text className="mb-2 text-xl font-bold">Your Favorites</Text>
+      <Text className="mb-5 text-xl font-bold">Your Favorites</Text>
 
       <CustomSearchBar value={searchText} onChange={setSearchText} />
 
@@ -29,6 +29,7 @@ export default function FavoritesScreen() {
         <Text className="mt-10 text-center text-gray-500">No favorites found.</Text>
       ) : (
         <FlatList
+          className="mt-10"
           data={filteredFavorites}
           keyExtractor={(item) => item.mal_id.toString()}
           renderItem={({ item }) => <AnimeCard anime={item} />}

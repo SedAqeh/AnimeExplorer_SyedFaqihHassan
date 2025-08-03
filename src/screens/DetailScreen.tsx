@@ -104,7 +104,7 @@ export default function DetailScreen() {
     <ScrollView className="flex-1 bg-white px-6" contentContainerStyle={{ paddingBottom: 60 }}>
       {/* Anime Poster */}
       <View
-        className="rounded-2xl bg-white"
+        className="rounded-2xl bg-white "
         style={{
           shadowColor: '#000',
           shadowOffset: { width: 0, height: 4 },
@@ -116,7 +116,7 @@ export default function DetailScreen() {
         <Image
           source={{ uri: anime.images.jpg.image_url }}
           style={{
-            width: screenWidth - 48,
+            width: screenWidth - 150,
             aspectRatio: imageRatio,
             borderRadius: 16,
           }}
@@ -129,11 +129,16 @@ export default function DetailScreen() {
 
       {/* Genres */}
       <View className="mt-4 flex-row flex-wrap gap-2">
-        {anime.genres.map((g) => (
-          <View key={g.name} className="rounded-full bg-indigo-100 px-3 py-1">
-            <Text className="text-xs font-medium text-indigo-700">{g.name}</Text>
-          </View>
-        ))}
+        {anime.genres.map((g) => {
+          const colors = ['bg-red-500', 'bg-yellow-500', 'bg-blue-500'];
+          const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+          return (
+            <View key={g.name} className={`rounded-full px-3 py-1 ${randomColor}`}>
+              <Text className="text-xs font-medium text-white">{g.name}</Text>
+            </View>
+          );
+        })}
       </View>
 
       <View className=" mt-4 flex-row items-center justify-between">
@@ -150,7 +155,7 @@ export default function DetailScreen() {
       </View>
 
       {/* Anime Info */}
-      <View className="mt-4 space-y-1 rounded-xl bg-indigo-500 p-3 shadow">
+      <View className="mt-4 space-y-1 rounded-xl bg-gray-900 p-3 shadow-2xl">
         <Text className="text-sm text-white">
           <Text className="font-semibold">Year:</Text> {anime.year ?? 'N/A'}
         </Text>
@@ -167,10 +172,10 @@ export default function DetailScreen() {
       </View>
 
       {/* Synopsis */}
-      <Text className="mb-2 mt-6 text-lg font-semibold text-gray-900">Synopsis</Text>
-      <View className="rounded-xl  bg-white p-3 shadow">
-        <Text className="text-justify text-sm leading-relaxed text-gray-800">{anime.synopsis}</Text>
-      </View>
+      <Text className="mb-2 mt-6 text-lg  font-semibold text-gray-900">Synopsis</Text>
+      {/* <View className="rounded-xl  bg-white p-3 shadow-2xl"> */}
+      <Text className="text-justify text-sm leading-relaxed text-black">{anime.synopsis}</Text>
+      {/* </View> */}
 
       {/* Favorite Button */}
       <TouchableOpacity

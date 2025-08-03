@@ -50,7 +50,7 @@ function MainTabs() {
         headerShown: false,
         tabBarIcon: ({ color, size, focused }) => getTabBarIcon(route.name, color, size, focused),
 
-        tabBarActiveTintColor: '#6366f1',
+        tabBarActiveTintColor: 'black',
         tabBarInactiveTintColor: 'gray',
       })}>
       <Tab.Screen name="Home" component={HomeScreen} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, View } from 'react-native';
 
 type Props = {
   value: string;
@@ -8,11 +8,14 @@ type Props = {
 
 export default function CustomSearchBar({ value, onChange }: Props) {
   return (
-    <TextInput
-      placeholder="Search anime..."
-      value={value}
-      onChangeText={onChange}
-      className="mt-6 rounded-md bg-white px-3 py-2 text-sm shadow"
-    />
+    <View className="mt-6 rounded-md bg-white px-3 shadow-2xl">
+      <TextInput
+        placeholder="Search anime..."
+        placeholderTextColor="#999"
+        value={value}
+        onChangeText={onChange}
+        className="py-2 text-sm"
+      />
+    </View>
   );
 }

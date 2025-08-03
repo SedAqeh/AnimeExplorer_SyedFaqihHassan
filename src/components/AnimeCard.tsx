@@ -1,4 +1,4 @@
-import React, { memo, useRef, useCallback } from 'react';
+import React, { memo, useRef, useCallback, useMemo } from 'react';
 import { View, Text, Image, TouchableOpacity, Animated } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -18,6 +18,7 @@ const AnimeCard = ({ anime, showFavoriteButton = true }: Props) => {
   const { favorites, addToFavorites, removeFromFavorites } = useAnimeStore();
   const isFavorited = favorites.some((fav) => fav.mal_id === anime.mal_id);
   const scaleAnim = useRef(new Animated.Value(1)).current;
+  const placeholderUri = Image.resolveAssetSource(require('../assets/placeholder.png')).uri;
 
   const toggleFavorite = useCallback(() => {
     Animated.sequence([
@@ -71,13 +72,15 @@ const AnimeCard = ({ anime, showFavoriteButton = true }: Props) => {
     return <View className="flex-row space-x-0.5">{stars}</View>;
   };
 
+  const starElements = useMemo(() => renderStars(anime.score ?? 0), [anime.score]);
+
   return (
-    <TouchableOpacity className="mb-3 w-[48%] rounded-xl bg-white p-2 shadow" onPress={handlePress}>
+    <TouchableOpacity
+      className="mb-3 w-[48%] rounded-xl bg-white p-2 shadow-2xl"
+      onPress={handlePress}>
       <Image
         source={{
-          uri:
-            anime.images?.jpg?.image_url ||
-            Image.resolveAssetSource(require('../assets/placeholder.png')).uri,
+          uri: anime.images?.jpg?.image_url || placeholderUri,
         }}
         className="h-44 w-full rounded-md"
         resizeMode="cover"
@@ -90,7 +93,7 @@ const AnimeCard = ({ anime, showFavoriteButton = true }: Props) => {
 
         <View>
           <View className="flex-row items-center gap-2">
-            <View className="flex-row">{renderStars(anime.score ?? 0)}</View>
+            <View className="flex-row">{starElements}</View>
             <Text className="text-xs font-bold italic">{anime.score?.toFixed(1) ?? 'N/A'}</Text>
           </View>
 

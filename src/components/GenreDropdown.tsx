@@ -26,25 +26,28 @@ export default function GenreDropdown() {
   }, []);
 
   return (
-    <View className=" p-5">
+    <View className="px-5 pb-5">
       <Text className="mb-1 text-sm font-medium text-gray-700">Filter by Genre:</Text>
       {loading ? (
         <ActivityIndicator />
       ) : (
-        <Picker
-          testID="genre-picker"
-          selectedValue={selectedGenre ?? ''}
-          onValueChange={(itemValue) => setSelectedGenre(itemValue === '' ? null : itemValue)}>
-          <Picker.Item label="All" value="" />
-          {genres.map((genre) => (
-            <Picker.Item
-              key={genre.mal_id}
-              label={genre.name}
-              value={genre.mal_id.toString()}
-              testID={`genre-${genre.name}`}
-            />
-          ))}
-        </Picker>
+        <View className="rounded-xl bg-white px-3 shadow-2xl">
+          <Picker
+            selectedValue={selectedGenre ?? ''}
+            onValueChange={(itemValue) => setSelectedGenre(itemValue === '' ? null : itemValue)}
+            testID="genre-picker"
+            style={{ color: 'black' }}>
+            <Picker.Item label="All" value="" />
+            {genres.map((genre) => (
+              <Picker.Item
+                key={genre.mal_id}
+                label={genre.name}
+                value={genre.mal_id.toString()}
+                testID={`genre-${genre.name}`}
+              />
+            ))}
+          </Picker>
+        </View>
       )}
     </View>
   );

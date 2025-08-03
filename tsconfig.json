@@ -3,10 +3,23 @@
   "compilerOptions": {
     "strict": true,
     "jsx": "react-jsx",
-
+    "types": [
+      "jest",
+      "react",
+      "react-native",
+      "node"
+    ],
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": [
+        "src/*"
+      ]
     }
-  }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "jest.setup.ts",
+    "nativewind-env.d.ts"
+  ]
 }

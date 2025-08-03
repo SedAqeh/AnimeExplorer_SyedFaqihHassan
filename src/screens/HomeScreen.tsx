@@ -166,22 +166,6 @@ export default function HomeScreen() {
 
       <GenreDropdown />
 
-      <Button
-        title="Open Detail via Deep Link"
-        onPress={async () => {
-          const url = 'animeexplorer://anime/21';
-          const supported = await Linking.canOpenURL(url);
-
-          console.log('canOpenURL:', supported);
-
-          if (supported) {
-            await Linking.openURL(url);
-          } else {
-            alert('Deep link not supported (did you restart with --scheme?)');
-          }
-        }}
-      />
-
       {isShimmerVisible() ? (
         <View className="flex-row flex-wrap justify-between px-4">
           {Array.from({ length: 6 }).map((_, idx) => (

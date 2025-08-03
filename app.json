@@ -3,6 +3,8 @@
     "name": "anime-explorer",
     "slug": "anime-explorer",
     "scheme": "animeexplorer",
+    "platforms": ["ios", "android"],
+    "deepLinking": true,
     "version": "1.0.0",
     "web": {
       "favicon": "./assets/favicon.png"
@@ -19,9 +21,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },

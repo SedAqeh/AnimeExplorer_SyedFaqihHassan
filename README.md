@@ -7,7 +7,7 @@ A simple yet powerful Anime discovery app built using **React Native + TypeScrip
 ## ✨ Features
 
 - 📜 Anime list with infinite scroll
-- 🔍 Search and debounce logic
+- 🔍 Search with debounce logic and reset handling
 - 🧾 Detail view with synopsis, genres, and score
 - ❤️ Add/remove favorites (with animated heart)
 - 📁 Favorites tab with local persistence (AsyncStorage)
@@ -15,7 +15,7 @@ A simple yet powerful Anime discovery app built using **React Native + TypeScrip
 - 🔁 Placeholder UI and shimmer on load
 - 🌈 Clean UI with Tailwind (NativeWind)
 - 🚀 Performance-optimized components (e.g., `React.memo`)
-- 📸 Trending banner and image fallbacks
+- 📸 Trending banner and image fallback
 - 📲 Deep linking and share intent
 
 ---
@@ -24,29 +24,29 @@ A simple yet powerful Anime discovery app built using **React Native + TypeScrip
 
 ### 🏠 Home Screen
 
-Browse trending and popular anime with genre filter and search.
+Browse trending and popular anime with genre filter and search.  
 ![Home Screen](./screenshots/home.png)
 
-### 🔍 Search Results
+### 🔍 Favourite Screen
 
-Search by anime title with debounce + reset handling.
-![Search Screen](./screenshots/search.png)
+Favourite animes and see in the same place.
+![Favaourite Screen](./screenshots/favourite.png)
 
 ### 📄 Detail View
 
-Detailed info with score, synopsis, genres, and image. Includes animated favorite toggle.
+Detailed info with score, synopsis, genres, and image. Includes animated favorite toggle.  
 ![Detail Screen](./screenshots/detail.png)
 
 ---
 
-## 🧠 Architecture Decisions
+## 🧠 Thought Process & Architecture Decisions
 
 - **State Management:** Zustand for lightweight, scalable global state.
-- **Navigation:** React Navigation for seamless screen transitions.
-- **API:** Axios + Jikan API with pagination support.
+- **Navigation:** React Navigation for smooth screen transitions.
+- **API:** Axios + Jikan API with pagination and search.
 - **Persistence:** AsyncStorage for storing favorites across sessions.
 - **Styling:** NativeWind (Tailwind CSS for React Native).
-- **Performance:** Memoized components, low-res image fallback, and loading placeholders.
+- **Performance:** Memoized components, shimmer placeholders, and fallback image logic.
 - **Animations:** Favoriting animation using React Native's `Animated`.
 
 ---
@@ -67,6 +67,7 @@ Detailed info with score, synopsis, genres, and image. Includes animated favorit
 ## 🚀 Getting Started
 
 1. **Clone the repo**
+
    ```bash
    git clone https://github.com/SedAqeh/AnimeExplorer_SyedFaqihHassan.git
    ```
@@ -85,7 +86,7 @@ Detailed info with score, synopsis, genres, and image. Includes animated favorit
    npx expo start
    ```
 
-> ⚠️ If using deep linking, ensure you start the app with:
+> ⚠️ If using deep linking, start with:
 
 ```bash
 npx expo start --scheme animeexplorer
@@ -99,10 +100,11 @@ npx expo start --scheme animeexplorer
 .
 ├── src/
 │   ├── api/              # Jikan API wrappers
+│   ├── assets/           # Store assets
 │   ├── components/       # Reusable UI components
+│   ├── navigation/       # App navigation
 │   ├── screens/          # Home, Detail, and Favorites screens
 │   ├── store/            # Zustand store setup
-│   ├── assets/           # App icons and splash
 │   └── utils/            # Helper functions (e.g., debounce)
 ├── screenshots/          # App screenshots
 ├── App.tsx
@@ -119,23 +121,21 @@ If added:
 npm run test
 ```
 
-Uses Jest and React Native Testing Library to cover basic UI logic.
+Uses Jest and React Native Testing Library for basic UI logic testing.
 
 ---
 
 ## ⚠️ Known Limitations
 
-- Rate-limited by Jikan API.
-- Share/deep link support varies across platforms (Android tested).
+* Jikan API is rate-limited — might hit throttle caps.
+* Share and deep linking behavior may vary across platforms (tested on Android).
 
 ---
 
 ## 🙋 About Me
 
 Built for the **Frontend Development Challenge** as a React Native showcase.
-Designed, coded, and optimized with ♥ by Syed Faqih Hassan.
-
-```
+Designed, coded, and optimized with ♥ by **Syed Faqih Hassan**.
 
 ```
 ````

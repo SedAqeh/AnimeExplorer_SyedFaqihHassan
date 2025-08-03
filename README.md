@@ -14,40 +14,29 @@ A simple yet powerful Anime discovery app built using **React Native + TypeScrip
 - 🎭 Genre filter dropdown
 - 🔁 Placeholder UI and shimmer on load
 - 🌈 Clean UI with Tailwind (NativeWind)
-- 🚀 Performance-optimized components (e.g., `React.memo`)
+- 🚀 Performance-optimized components (`React.memo`)
 - 📸 Trending banner and image fallback
 - 📲 Deep linking and share intent
 
 ---
 
-## 📷 Screenshots
+## 📸 Screenshots
 
-### 🏠 Home Screen
-
-Browse trending and popular anime with genre filter and search.  
-![Home Screen](./screenshots/home.png)
-
-### 🔍 Favourite Screen
-
-Favourite animes and see in the same place.
-![Favaourite Screen](./screenshots/favourite.png)
-
-### 📄 Detail View
-
-Detailed info with score, synopsis, genres, and image. Includes animated favorite toggle.  
-![Detail Screen](./screenshots/detail.png)
+| Home                      | Detail                      | Favourite                      |
+| ------------------------- | --------------------------- | ------------------------------ |
+| ![](screenshots/home.png) | ![](screenshots/detail.png) | ![](screenshots/favourite.png) |
 
 ---
 
 ## 🧠 Thought Process & Architecture Decisions
 
-- **State Management:** Zustand for lightweight, scalable global state.
-- **Navigation:** React Navigation for smooth screen transitions.
-- **API:** Axios + Jikan API with pagination and search.
-- **Persistence:** AsyncStorage for storing favorites across sessions.
-- **Styling:** NativeWind (Tailwind CSS for React Native).
-- **Performance:** Memoized components, shimmer placeholders, and fallback image logic.
-- **Animations:** Favoriting animation using React Native's `Animated`.
+- **State Management:** Zustand for lightweight, scalable global state
+- **Navigation:** React Navigation for smooth screen transitions
+- **API:** Axios + Jikan API with pagination and search
+- **Persistence:** AsyncStorage to store favorites across sessions
+- **Styling:** NativeWind (Tailwind CSS for React Native)
+- **Performance:** Memoized components, shimmer placeholders, image fallbacks
+- **Animations:** Favoriting animation via React Native's `Animated` API
 
 ---
 
@@ -55,11 +44,11 @@ Detailed info with score, synopsis, genres, and image. Includes animated favorit
 
 - React Native (Expo)
 - TypeScript
-- Zustand (state)
+- Zustand
 - React Navigation
 - Axios
 - AsyncStorage
-- Tailwind CSS (NativeWind)
+- Tailwind CSS (via NativeWind)
 - Jikan API
 
 ---
@@ -71,8 +60,6 @@ Detailed info with score, synopsis, genres, and image. Includes animated favorit
    ```bash
    git clone https://github.com/SedAqeh/AnimeExplorer_SyedFaqihHassan.git
    ```
-
-````
 
 2. **Install dependencies**
 
@@ -86,7 +73,7 @@ Detailed info with score, synopsis, genres, and image. Includes animated favorit
    npx expo start
    ```
 
-> ⚠️ If using deep linking, start with:
+> ⚠️ For deep linking support:
 
 ```bash
 npx expo start --scheme animeexplorer
@@ -100,10 +87,10 @@ npx expo start --scheme animeexplorer
 .
 ├── src/
 │   ├── api/              # Jikan API wrappers
-│   ├── assets/           # Store assets
+│   ├── assets/           # App icons and splash assets
 │   ├── components/       # Reusable UI components
-│   ├── navigation/       # App navigation
-│   ├── screens/          # Home, Detail, and Favorites screens
+│   ├── navigation/       # App navigation config
+│   ├── screens/          # Home, Detail, Favorites screens
 │   ├── store/            # Zustand store setup
 │   └── utils/            # Helper functions (e.g., debounce)
 ├── screenshots/          # App screenshots
@@ -121,21 +108,18 @@ If added:
 npm run test
 ```
 
-Uses Jest and React Native Testing Library for basic UI logic testing.
+> Uses Jest and React Native Testing Library for basic UI logic coverage.
 
 ---
 
 ## ⚠️ Known Limitations
 
-* Jikan API is rate-limited — might hit throttle caps.
-* Share and deep linking behavior may vary across platforms (tested on Android).
+- Jikan API is rate-limited — might hit throttle limits
+- Deep linking and share behavior may vary (Android tested)
 
 ---
 
 ## 🙋 About Me
 
-Built for the **Frontend Development Challenge** as a React Native showcase.
+Built for the **Frontend Development Challenge** as a React Native showcase.  
 Designed, coded, and optimized with ♥ by **Syed Faqih Hassan**.
-
-```
-````
